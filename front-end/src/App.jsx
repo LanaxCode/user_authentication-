@@ -14,7 +14,6 @@ function App() {
         setStatus("error");
       });
 
-
   }, []);
 
   return <>API Status: {status}</>;
