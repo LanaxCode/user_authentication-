@@ -18,17 +18,6 @@ const ReactAppIndex = new URL("../front-end/dist/index.html", import.meta.url);
 
 app.use(express.static(ReactAppDistPath.pathname));
 
-
-
-/*
- * express.static match auf jede Datei im angegebenen Ordner
- * und erstellt uns einen request handler for FREE
- * app.get("/",(req,res)=> res.sendFile("path/to/index.html"))
- * app.get("/index.html",(req,res)=> res.sendFile("path/to/index.html"))
- */
-
-
-
 app.get("/api/status", (req, res) => {
   res.send({ status: "Ok" });
 });
@@ -57,7 +46,6 @@ app.post("/api/signup", async (req, res) => {
   }
   })
 
-
 app.post("/api/login", async (req,res)=>{
   const {email, password} =req.body
 
@@ -77,9 +65,6 @@ app.post("/api/login", async (req,res)=>{
   }catch (error){
     res.status(500).json({message:"Internal error"})
   }})
-
-  
-
 
 app.get("/*", (req, res) => {
   res.sendFile(ReactAppIndex.pathname);
